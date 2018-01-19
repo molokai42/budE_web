@@ -1,34 +1,34 @@
-import React from "react";
-import { extendObservable } from "mobx";
-import { observer } from "mobx-react";
-import { Button, Input, Container, Header } from "semantic-ui-react";
-import { graphql } from "react-apollo";
-import gql from "graphql-tag";
-import { ok } from "assert";
+import React from 'react';
+import { extendObservable } from 'mobx';
+import { observer } from 'mobx-react';
+import { Button, Input, Container, Header } from 'semantic-ui-react';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+import { ok } from 'assert';
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
 
     extendObservable(this, {
-      email: "",
-      password: ""
+      email: '',
+      password: '',
     });
   }
   onSubmit = async () => {
     const { email, password } = this;
     const response = await this.props.mutate({
-      variables: { email, password }
+      variables: { email, password },
     });
     console.log(response);
     const { ok, token, refreshToken } = response.data.login;
     if (ok) {
-      localStorage.setItem("token", token);
-      localStorage.setItem("refreshToken", refreshToken);
+      localStorage.setItem('token', token);
+      localStorage.setItem('refreshToken', refreshToken);
     }
   };
 
-  onChange = e => {
+  onChange = (e) => {
     const { name, value } = e.target;
     this[name] = value;
   };
@@ -39,13 +39,7 @@ class Login extends React.Component {
     return (
       <Container text>
         <Header as="h2">Login</Header>
-        <Input
-          name="email"
-          onChange={this.onChange}
-          value={email}
-          placeholder="Email"
-          fluid
-        />
+        <Input name="email" onChange={this.onChange} value={email} placeholder="Email" fluid />
         <Input
           name="password"
           onChange={this.onChange}

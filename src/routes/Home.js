@@ -1,6 +1,6 @@
-import React from "react";
-import gql from "graphql-tag";
-import { graphql } from "react-apollo";
+import React from 'react';
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
 
 const Home = ({ data: { allDispensaries = [] } }) =>
   allDispensaries.map(d => <h1 key={d.id}>{d.email}</h1>);

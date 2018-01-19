@@ -1,21 +1,13 @@
-import React from "react";
-import { Button, Container, Header, Input } from "semantic-ui-react";
+import React from 'react';
+import { Button, Container, Input } from 'semantic-ui-react';
 import './Header.css';
 
 class Header extends React.Component {
-  
   render() {
     const { email, password, password2 } = this.state;
     return (
       <Container text>
-        <Header as="h2">Register</Header>
-        <Input
-          name="email"
-          onChange={this.onChange}
-          value={email}
-          placeholder="Email"
-          fluid
-        />
+        <Input name="email" onChange={this.onChange} value={email} placeholder="Email" fluid />
         <Input
           name="password"
           onChange={this.onChange}
